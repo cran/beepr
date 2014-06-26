@@ -1,3 +1,8 @@
+pingr 1.1
+===========
+
+* beep() throws a warning instead of an error if no working audio interface is found. The rationale for this is that it would be worse if a long analysis was aborted due to the notification system failing rather than to not throw a proper error.
+
 pingr 1.0
 ===========
 
