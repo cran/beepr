@@ -8,14 +8,16 @@
 #'an error. This is in order to not risk aborting or stopping the process that
 #'you wanted to get notified about.
 #'
-#'@param sound character string or number specifying what sound to be played by
-#'  either specifying one of the built in sounds or specifying the path to a wav
-#'  file. The default is 1. Possible sounds are: \enumerate{ \item \code{"ping"}
-#'  \item \code{"coin"} \item \code{"fanfare"} \item \code{"complete"} \item
-#'  \code{"treasure"} \item \code{"ready"} \item \code{"shotgun"} \item
-#'  \code{"mario"} \item \code{"wilhelm"} \item \code{"facebook"} } If
-#'  \code{sound} does not match any of the sounds above, or is a valid path, a
-#'  random sound will be played.
+#'@param sound character string or number specifying what sound to be played by 
+#'  either specifying one of the built in sounds, specifying the path to a wav 
+#'  file or specifying an url. The default is 1. Possible sounds are:
+#'  \enumerate{ \item \code{"ping"} \item \code{"coin"} \item \code{"fanfare"}
+#'  \item \code{"complete"} \item \code{"treasure"} \item \code{"ready"} \item
+#'  \code{"shotgun"} \item \code{"mario"} \item \code{"wilhelm"} \item
+#'  \code{"facebook"} \item \code{"sword"} } If \code{sound} does not match any
+#'  of the sounds above, or is a valid path or url, a random sound will be
+#'  played. Currently \code{beep} can only handle http urls, https is not
+#'  supported.
 #'@param expr An optional expression to be excecuted before the sound.
 #'  
 #'  
@@ -49,23 +51,42 @@ beep <- function(sound=1, expr=NULL) {
               shotgun = "shotgun.wav",
               mario = "smb_stage_clear.wav",
               wilhelm = "wilhelm.wav",
-              facebook = "facebook.wav")
+              facebook = "facebook.wav",
+              sword = "sword.wav")
+  sound_path <- NULL
   if(is.na(sounds[sound]) || length(sounds[sound]) != 1) {
-    if(is.character(sound) && file.exists(sound)) {
-      sound_path <- sound
-    } else{
-      sound_path <- system.file(paste("sounds/", sample(sounds, size=1), sep=""), package="beepr")
+    if(is.character(sound)) {
+      sound <- str_trim(sound)
+      if(file.exists(sound)) {
+        sound_path <- sound
+      } else if(str_detect(sound, "^https://")) {
+        warning("Can't currently use https urls, only http.")
+      } else if(str_detect(sound, "^http://")) {
+        temp_file <- tempfile(pattern="")
+        if(download.file(sound, destfile = temp_file, quiet = TRUE) == 0) { # The file was successfully downloaded
+          sound_path <- temp_file
+        } else {
+          warning(paste("Tried but could not download", sound))
+        }
+      } else {
+        warning(paste('"', sound, '" is not a valid sound nor path, playing a random sound instead.', sep = ""))
+      }
     }
   } else {
     sound_path <- system.file(paste("sounds/", sounds[sound], sep=""), package="beepr")
   }
+  
+  if(is.null(sound_path)) { # play a random sound
+    sound_path <- system.file(paste("sounds/", sample(sounds, size=1), sep=""), package="beepr")
+  }
+  
   tryCatch(play_file(sound_path), error = function(ex) {
     warning("beep() could not play the sound due to the following error:\n", ex)
   })
 }
 
 is_wav_fname <- function(fname) {
-  str_detect(fname, ignore.case("\\.wav$"))
+  str_detect(fname, regex("\\.wav$", ignore_case = TRUE))
 }
 
 play_vlc <- function(fname) {

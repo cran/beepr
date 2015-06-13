@@ -1,9 +1,10 @@
 `beepr`: Easily Play Notification Sounds on any Platform
 ========================================================
 
-`beepr` is an R package that contains one function, `beep()`, with one purpose: To make it easy to play notification sounds on whatever platform you are on. It is intended to be useful, for example, if you are running a long analysis in the background and want to know when it is ready.
+`beepr` is an R package that contains one function, `beep()`, with one purpose: To make it easy to play notification sounds on whatever platform you are on. It is intended to be useful, for example, if you are running a long analysis in the background and want to know when it is ready. 
 
-This package was previously called `pingr` and included a `ping()` function. It has been renamed in order to not be confused with the Unix tool [ping](http://en.wikipedia.org/wiki/Ping_%28networking_utility%29).  
+This package was previously called `pingr` and included a `ping()` function. It has been renamed in order to not be confused with the Unix tool [ping](http://en.wikipedia.org/wiki/Ping_%28networking_utility%29). For the rationale behind `beepr` see the original announcement: http://sumsar.net/blog/2014/01/announcing-pingr/
+
 
 Installation
 ----------------
@@ -12,6 +13,13 @@ Installation
 
 ```
 install.packages("beepr")
+```
+
+You can also grab the development version of `beepr` directly from github:
+
+```
+library(devtools)
+install_github("pingr", "rasmusab")
 ```
 
 Requirements
@@ -48,6 +56,7 @@ Details
 8. "mario"
 9. "wilhelm"
 10. "facebook"
+11. "sword"
 
 If `sound` does not match any of the sounds above, or is a valid path, a random sound will be played.
 
