@@ -1,7 +1,9 @@
 `beepr`: Easily Play Notification Sounds on any Platform
 ========================================================
 
-`beepr` is an R package that contains one function, `beep()`, with one purpose: To make it easy to play notification sounds on whatever platform you are on. It is intended to be useful, for example, if you are running a long analysis in the background and want to know when it is ready. 
+`beepr` is an R package that contains one main function, `beep()`, with one purpose: To make it easy to play notification sounds on whatever platform you are on. It is intended to be useful, for example, if you are running a long analysis in the background and want to know when it is ready. 
+
+A derivative function, `beep_on_error()`, wraps an expression and will only beep if an error occurs when that expression is evaluated.
 
 This package was previously called `pingr` and included a `ping()` function. It has been renamed in order to not be confused with the Unix tool [ping](http://en.wikipedia.org/wiki/Ping_%28networking_utility%29). For the rationale behind `beepr` see the original announcement: http://sumsar.net/blog/2014/01/announcing-pingr/
 
@@ -9,7 +11,7 @@ This package was previously called `pingr` and included a `ping()` function. It 
 Installation
 ----------------
 
-`beepr` is available on [CRAN](http://cran.r-project.org/) and can be installed from within R by running:
+`beepr` is available on [CRAN](https://cran.r-project.org/) and can be installed from within R by running:
 
 ```
 install.packages("beepr")
@@ -19,7 +21,7 @@ You can also grab the development version of `beepr` directly from github:
 
 ```
 library(devtools)
-install_github("pingr", "rasmusab")
+install_github("rasmusab/beepr")
 ```
 
 Requirements
@@ -75,4 +77,7 @@ beep(3)
 
 # Play a random sound
 beep(0)
+
+# Play a sound if an error occurs
+beep_on_error(1 + "a", sound = "wilhelm")
 ```
