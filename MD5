@@ -1,9 +1,9 @@
-b127ada923c59817b85c5880c852ab0e *DESCRIPTION
+1be27a46233b44b00dd1801ba383a6ff *DESCRIPTION
 86cf399f2f36b0796b429562ffa3007b *NAMESPACE
-a3623f4a09b403aa7c70f23e1c3725ec *NEWS
-f4b9a114d21fdb635017ba24f235954a *R/beepr-package.R
-01a85d0970a5c3b9fd5ad97679980500 *R/beepr.R
-7e44860918bdf7e34cfa6d1b1bdf89f5 *README.md
+e13fc610a2bffc6b246e83bb6b9fcfc8 *NEWS
+c501a254c18f1ebb53752622af57afdd *R/beepr-package.R
+da23accffea875419dcd05c6b4bb05ba *R/beepr.R
+0300bd9b4b760f19d6c9975cbfe82111 *README.md
 c4770d7cc63a1c72bb154bfc7f577a96 *inst/sounds/facebook.wav
 abce66f2bb7db247d820f2408c45cda9 *inst/sounds/microwave_ping_mono.wav
 6bc14fe4a4cfabaf8b4f1b31b06b199a *inst/sounds/new_item.wav
@@ -15,8 +15,8 @@ a3910ef1a0efbace4b92dcf77723147d *inst/sounds/sword.wav
 1af313edf4a29a754444c99e8e3afcb3 *inst/sounds/victory_fanfare_mono.wav
 3dc151ebd19e46a1ac06abfdcad840f1 *inst/sounds/wilhelm.wav
 e93dbe9fe862b6d932ea0d5e44f3962c *inst/sounds/work_complete.wav
-2ffe9b73b8af562cc4d60da4741795d0 *man/beep.Rd
-1293e3b99c34866b6e5a9b42440d5915 *man/beep_on_error.Rd
-1f01a79ca1fc33fd172077d3c76872f7 *man/beepr.Rd
+43a156b101bf7d82825d607e1a46e222 *man/beep.Rd
+f418f46d8b3f8e90287275310ca9614b *man/beep_on_error.Rd
+5d2a8b0e0ad95631eea67a36930f3edc *man/beepr.Rd
 b4043c508df2bdb4cb1d7b78103fe3f4 *tests/testthat.R
-d579a3633fe216cb8653846e60bcba56 *tests/testthat/test-beepr.R
+eca8f31db1e566039a56db6c864220a5 *tests/testthat/test-beepr.R
